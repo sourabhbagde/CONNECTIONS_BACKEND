@@ -1,0 +1,15 @@
+{
+  "name": "connections_backend",
+  "version": "1.0.0",
+  "description": "This is a nodeJS backend in express for connections website.",
+  "license": "ISC",
+  "author": "Sourabh Bagde",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
