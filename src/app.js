@@ -5,16 +5,24 @@ const app = express();
 
 // request handlers
 
-app.use('/first', (req, res) => {
-  res.send('This is first endpoint.');
-});
+app.get("/user", (req, res) => {
+    res.send("This is user get request");
+})
 
-app.use("/", (req, res) => {
-    res.send("This is server response.");
-});
+app.post("/user", (req, res) => {
+    res.send("This is user post request");
+})
 
-app.use("/second", (req, res) => {
-    res.send("This is second endpoint.");
+app.put("/user", (req, res) => {
+    res.send("This is user put request");
+})
+
+app.delete("/user", (req, res) => {
+    res.send("This is user delete request");
+})
+
+app.patch("/user", (req, res) => {
+    res.send("This is user patch request");
 })
 
 // start the server at port 3000
