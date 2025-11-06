@@ -5,9 +5,14 @@ const app = express();
 
 // request handlers
 
-app.get("/user", (req, res) => {
+// app.get("/ab*c", (req, res) => {
+//   res.send("This is a get request");
+// });
+
+app.get("/user/:userId", (req, res) => {
+    console.log(req.params);
     res.send("This is user get request");
-})
+});
 
 app.post("/user", (req, res) => {
     res.send("This is user post request");
