@@ -32,15 +32,23 @@ const app = express();
 
 // start the server at port 3000
 app.use("/user",
+    [
     (req, res, next) => {
         console.log("Handler #1");
-        res.send("Route handler #1");
+        // res.send("Route handler #1");
         next();
     },
 
-    (req, res) => {
+    (req, res, next) => {
         console.log("Handler #2");
-        res.send("Route handler #2");
-});
+        // res.send("Route handler #2")
+        next();
+    }
+    ],
+    (req, res) => {
+        console.log("Final handler");
+        res.send("Response from final handler");       
+}
+);
 
 app.listen(3000);
