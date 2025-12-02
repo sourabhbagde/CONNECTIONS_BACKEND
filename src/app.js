@@ -14,14 +14,18 @@ const app = express();
 //     res.send("User Info");
 // });
 app.get('/getUserInfo', (req, res) => {
-    // here error is not handled properly.
+    try {
+        // try logic here...
     throw new Error("Simulated server error");
     res.send("User Info");
+    } catch (err) {
+        res.status(500).send('Internal Server Error: ' + err.message);
+    }
 });
 
-app.use('/', (err, req, res, next) => {
-  // here error is handled properly.
-  res.status(500).send('Internal Server Error: ' + err.message);
-});
+// app.use('/', (err, req, res, next) => {
+//   // here error is handled properly.
+//   res.status(500).send('Internal Server Error: ' + err.message);
+// });
 
 app.listen(3000);
