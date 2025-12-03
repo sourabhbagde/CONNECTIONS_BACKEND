@@ -6,9 +6,4 @@ const connectDatabase = async () => {
     );
 }
 
-connectDatabase().then(() => {
-    console.log('Connected to database');
-})
-    .catch((err) => { 
-        console.error('Database connection error: ', err);
-    })
+module.exports = { connectDatabase };

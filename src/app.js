@@ -1,33 +1,16 @@
 const express = require('express');
-require('./config/database'); // database connection
+const { connectDatabase } = require('./config/database');
+
 // express server instance
 const app = express();
-// // handling middlewares from separate file as authAdmin and authUser from auth.js
-// // const {authAdmin, authUser} = require('./middlewares/auth');
 
-// // request handlers
-// // app.use('/admin', authAdmin);
-// // app.use('/user', authUser);
-
-// // app.get('/user/getInfo', authUser, (req, res) => {
-// //     res.send("User Info");
-// // });
-// app.get('/getUserInfo', (req, res) => {
-//     try {
-//         // try logic here...
-//     throw new Error("Simulated server error");
-//     res.send("User Info");
-//     } catch (err) {
-//         res.status(500).send('Internal Server Error: ' + err.message);
-//     }
-// });
-
-// // app.use('/', (err, req, res, next) => {
-// //   // here error is handled properly.
-// //   res.status(500).send('Internal Server Error: ' + err.message);
-// // });
-
-
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+// starting the server after db connection is established
+connectDatabase().then(() => {
+    console.log('Connected to database');
+    app.listen(3000, () => {
+      console.log('Server is running on port 3000');
+    });
+})
+    .catch((err) => { 
+        console.error('Database connection error: ', err);
+    })
